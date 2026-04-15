@@ -9,7 +9,9 @@ export const loadData = async (key) => {
   const data = await AsyncStorage.getItem(key);
   return data ? JSON.parse(data) : null;
 };
-
+export const clearAllData = async () => {
+  await AsyncStorage.clear();
+}
 export const deleteAllData = async (key) => {
   await AsyncStorage.removeItem(key);
 };

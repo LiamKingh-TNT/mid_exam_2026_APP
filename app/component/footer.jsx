@@ -9,22 +9,16 @@ export default function Footer({ type = "default", title = "" }) {
 
     const getFooterContent = () => {
         switch (type) {
-        case "back_button":
-            return (
-                <Pressable onPress={() => router.back()} title="" style={{ marginLeft: 20 }}>
-                    <Image source={require("../../assets/icons/icon_back.png")} style={{ width: 32, height: 32 }} />
-                </Pressable>
-            );
         default:
             return (
                 <View style={{flexDirection: "row", justifyContent: "space-around", width: "100%", paddingHorizontal: 40, alignItems: "center"}}>
-                    <Pressable onPress={() => router.push("/center/mission_list")} title="">
+                    <Pressable onPress={() => router.push({pathname: "/center/mission_list", params: {type: "default", title: "任務表"}})} title="">
                         <Image source={require("../../assets/icons/Home.png")} style={{ width: 32, height: 32 }} />
                     </Pressable>
-                    <Pressable onPress={() => router.push("/center/settings")} title="">
+                    <Pressable onPress={() => router.push({pathname: "/center/calendar", params: {type: "default", title: "日曆"}})} title="">
                         <Image source={require("../../assets/icons/Calendar.png")} style={{ width: 32, height: 32 }} />
                     </Pressable>
-                    <Pressable onPress={() => router.push("/center/settings")} title="">
+                    <Pressable onPress={() => router.push({pathname: "/center/settings", params: {type: "default", title: "設定"}})} title="">
                         <Image source={require("../../assets/icons/Settings.png")} style={{ width: 32, height: 32 }} />
                     </Pressable>
                 </View>

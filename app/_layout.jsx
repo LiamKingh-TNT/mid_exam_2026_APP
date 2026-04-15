@@ -12,6 +12,7 @@ export default function RootLayout() {
           <Stack.Screen name="cover" />
           <Stack.Screen name="center"/>
           <Stack.Screen name="mission_adder"/>
+          <Stack.Screen name="game_mission_adder"/>
         </Stack>
       <StatusBar style="auto" />
     </SafeAreaView>

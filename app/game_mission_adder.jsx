@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { pickImage } from "../utils/photoHandler";
 import { loadData, setData, saveData } from "../utils/storage";
 export default function MissionAdder() {
+    
+    const { id, title, type } = useLocalSearchParams();
     const router = useRouter();
     const [photo, setPhoto] = useState(null);
     const [gameName, setGameName] = useState("");
@@ -17,12 +19,14 @@ export default function MissionAdder() {
     const handleAddMission = async () => {
         const newMission = {
             id: Date.now(),
-            gameName: gameName.length > 0 ? gameName : "未命名遊戲",
+            gameName: gameName.length > 0 ? gameName : "未命名任務",
             icon: photo,
+            complete: false,
         };
-        const loadedData = await loadData("mission_list");
+        console.log("新增的任務：", newMission, "id:", id);
+        const loadedData = await loadData(`mission_list_${id}`);
         const updatedData = loadedData === null ? [newMission] : [...loadedData, newMission];
-        await saveData("mission_list", updatedData);
+        await saveData(`mission_list_${id}`, updatedData);
         router.back();
     };
 
@@ -54,13 +58,13 @@ export default function MissionAdder() {
                         點擊上傳
                     </Text>
                     <Text style={styles.MissionAdderText}>
-                        遊戲ICON
+                        任務ICON
                     </Text>
                     <TextInput 
                         style={[styles.MissionAdderInput]}
-                        onPress={() => console.log("點擊輸入遊戲名稱")}
+                        onPress={() => console.log("點擊輸入任務名稱")}
                         value={gameName}
-                        placeholder="請輸入遊戲名稱"
+                        placeholder="請輸入任務名稱"
                         onChangeText={setGameName}
                     />
                     <Pressable 

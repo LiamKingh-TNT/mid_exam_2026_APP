@@ -1,19 +1,20 @@
 import { Button } from "react-native";
 import { StyleSheet, Text, Image, View, ScrollView, TouchableOpacity, Pressable  } from "react-native";
 
-import { useLocalSearchParams, useRouter, Stack, Slot } from "expo-router";
+import { useGlobalSearchParams, useRouter, Stack, Slot } from "expo-router";
 import Header from "../component/header";
 import Footer from "../component/footer";
 export default function Center() {
+    const { type = "default", title = "任務表" } = useGlobalSearchParams();
     const router = useRouter();
     const activePage = "home";
     return (
         <View style={styles.Page}>
-            <Header type="default" title="任務表" />
+            <Header type={type} title={title} />
             <View style={styles.Content}>
                 <Slot />
             </View>
-            <Footer type="default" title="任務表" />
+            <Footer type={type} title={title} />
         </View>
     );
 }
