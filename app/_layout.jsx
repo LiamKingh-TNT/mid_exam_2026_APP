@@ -9,7 +9,7 @@ export default function RootLayout() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
         <Stack screenOptions={{headerShown: false}} >
-          <Stack.Screen name="cover" />
+          <Stack.Screen name="index" />
           <Stack.Screen name="center"/>
           <Stack.Screen name="mission_adder"/>
           <Stack.Screen name="game_mission_adder"/>
