@@ -1,4 +1,4 @@
-import { loadData } from "./storage";
+import { loadData, saveData } from "./storage";
 
 export const checkAllMissions = async () => {
     const data = await loadData("mission_list");
